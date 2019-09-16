@@ -7,11 +7,13 @@ MORTGAGE CALCULATOR
 @author: Nathan Hoang
 """
 
-def fixed_mortgage_payment(principal,rate,months_term):
+def fixed_mortgage_payment(principal, rate, months_term):
+    '''function to calculate the fixed mortgage payments based on inputs'''
     return principal*((rate * (1 + rate)**months_term) / \
                       (((1 + rate)**months_term)-1))
 
 def shell():
+    '''shell to run program'''
     print('Welcome to the Mortgage Calculator.\n\nThis program will \
 calculate your monthly mortgage payment per month based on your loan amount, \
 annual interest rate, and compound period (Optional)')
@@ -35,14 +37,13 @@ interval per year (12 is monthly, 32 is semi-weekly, 52 is weekly, \
 365 is daily): '))
                     rate = (1 + rate/compound_period)**(compound_period/12)-1
                     monthly_payment = \
-                    fixed_mortgage_payment(principal,rate,months_term)
-                    
+                    fixed_mortgage_payment(principal, rate, months_term)
                     total_paid = monthly_payment*months_term
                     total_interest = total_paid - principal
-                    print (f'\nMonthly Payment: ${monthly_payment:.2f}')
-                    print (f'Total of {months_term} \
+                    print(f'\nMonthly Payment: ${monthly_payment:.2f}')
+                    print(f'Total of {months_term} \
 payments: ${total_paid:.2f}')
-                    print (f'Total interest: ${total_interest:.2f}')
+                    print(f'Total interest: ${total_interest:.2f}')
                     break
                 if compound_dec.lower() == 'n':
                     rate /= 12
@@ -50,17 +51,15 @@ payments: ${total_paid:.2f}')
                     fixed_mortgage_payment(principal, rate, months_term)
                     total_paid = monthly_payment*months_term
                     total_interest = total_paid - principal
-                    print (f'\nMonthly Payment: ${monthly_payment:.2f}')
-                    print (f'Total of {months_term} payments: \
+                    print(f'\nMonthly Payment: ${monthly_payment:.2f}')
+                    print(f'Total of {months_term} payments: \
 ${total_paid:.2f}')
-                    print (f'Total interest: ${total_interest:.2f}')
+                    print(f'Total interest: ${total_interest:.2f}')
                     break
-                
+
         restart = input('Calculate again? \
 Select "Y" or any other key to quit: ')
         if not restart.lower() == 'y':
             break
 
 shell()
-                
-            
